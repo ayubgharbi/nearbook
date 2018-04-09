@@ -14,15 +14,12 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <%= link_to root_path, class: "navbar-brand" do %>
-                                    <p class="logo-pa"><%= image_tag "logo.png", class: "logo" %>
-                                            </p>            
+                                    <p class="logo">near<br> books</p>           
                                 <% end %>
                             </div>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav navbar-left">
+                                <ul class="nav navbar-nav navbar-right">
                                     <li><%= link_to "Accueil", root_path %></li>
-                                </ul>
-                                <ul class="nav navbar-nav navbar-right">  
                                 </ul>
                             </div>
                         </div>
@@ -48,18 +45,13 @@
                                 <span class="icon-bar"></span>
                                 </button>
                                 <%= link_to root_path, class: "navbar-brand" do %>
-                                    <p class="logo-pa"><%= image_tag "logo.png", class: "logo" %></p>
+                                    <p class="logo">near<br> books</p>
                                 <% end %>
                             </div>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav navbar-left">
-                                    <li><a href="#android">Acceuil</a></li>
-                                    <li><a href="#about">À propos</a></li>
-                                    <li><a href="#shop">Shops</a></li>
-                                    <li><a href="#home">Annonces</a></li>
-                                    <li class="hide"><a href="#service">What we do?</a></li>
-                                </ul>
-                                <ul class="nav navbar-nav navbar-right">      
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><%= link_to "Sign up", new_user_registration_path %></li>
+                                    <li><%= link_to "Login", new_user_session_path %></li>
                                 </ul>
                             </div>
                         </div>
