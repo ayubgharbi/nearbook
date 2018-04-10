@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>UniBooks</title>
+    <title>near book</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -17,9 +17,8 @@
 
 				        <h1 style="color: #fff"><%= image_tag "281767.svg", id: "google_map" %>Find books near you</h1>
 
-				        <%= form_tag "#", :method => :get do %>
+				        <%= form_tag books_path, :method => :get do %>
 				          <p>
-				          	<label>Location</label>
 				            <%= text_field_tag :search, params[:search], class: "form-control form-width" %>
 				            <%= submit_tag "Search", :name => nil, class: "green-btn" %>
 				          </p>

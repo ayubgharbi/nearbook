@@ -1,0 +1,51 @@
+<div style="margin-top: 40px;">
+	<div class="row">
+		<div class="col-md-3"><%= image_tag @book.image.url(:large), class: "book-img1" %></div>
+		<div class="col-md-3">
+			<h2 class="book-title" style="color: #333333"><%= @book.title %></h2>
+			<h2 class="book-price"><%= number_to_currency(@book.price, unit: "") %> $</h2>
+			<p class="book-description" style="color: #333333"><%= @book.description %></p>
+
+		</div>
+	</div>
+	
+	
+	<div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: <%= @book.user.latitude %>, lng: <%= @book.user.longitude %> };
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXYYNHt5bguptWTF27gBIdRe4Vmz05rUw&callback=initMap">
+    </script>
+
+    <h1>Nearby books</h1>
+	    <% for book in @book.nearbys(10).first(2) %>
+	    	<div class="book">
+				<div class="row">
+					<%= link_to book do %>
+					<div class="col-md-2">
+						<%= image_tag book.image.url(:large), class: "book-img" %>
+					</div>
+					<div class="col-md-2">
+						<h2 class="book-title" style="color: #333333"><%= book.title %></h2>
+					</div>
+					<div class="col-md-8">
+							<%= image_tag "281767.svg", id: "google_map" %>
+							<h3 class="book-price"><%= number_to_currency(book.price, unit: "") %> $</h3>
+							(<%= book.distance.round(2) %>, miles)
+					</div>
+					<% end %>
+				</div>
+			</div>
+	    <% end %>
+</div>

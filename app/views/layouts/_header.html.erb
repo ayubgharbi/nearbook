@@ -14,12 +14,17 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <%= link_to root_path, class: "navbar-brand" do %>
-                                    <p class="logo">near<br> books</p>           
+                                    <p class="logo">near book</p>           
                                 <% end %>
                             </div>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li><%= link_to "Accueil", root_path %></li>
+                                    <% if current_user %>
+                                        <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
+                                    <% else %>
+                                        <li><%= link_to "Sign up", new_user_registration_path %></li>
+                                        <li><%= link_to "Login", new_user_session_path %></li>
+                                    <% end %>
                                 </ul>
                             </div>
                         </div>
@@ -45,13 +50,17 @@
                                 <span class="icon-bar"></span>
                                 </button>
                                 <%= link_to root_path, class: "navbar-brand" do %>
-                                    <p class="logo">near<br> books</p>
+                                    <p class="logo">near book</p> 
                                 <% end %>
                             </div>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li><%= link_to "Sign up", new_user_registration_path %></li>
-                                    <li><%= link_to "Login", new_user_session_path %></li>
+                                    <% if current_user %>
+                                        <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
+                                    <% else %>
+                                        <li><%= link_to "Sign up", new_user_registration_path %></li>
+                                        <li><%= link_to "Login", new_user_session_path %></li>
+                                    <% end %>
                                 </ul>
                             </div>
                         </div>

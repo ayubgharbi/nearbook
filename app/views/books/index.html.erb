@@ -1,0 +1,27 @@
+<div style="margin-top: 40px;">
+	<% if params[:search].present? %>
+        <h2 style="color: #3C472F">Books near <span style="color: #223d61"><%= params[:search] %></span></h2>
+    <% end %>
+	<% @books.each do |book| %>
+		<div class="book">
+			<div class="row">
+				<%= link_to book do %>
+				<div class="col-md-2">
+					<%= image_tag book.image.url(:large), class: "book-img" %>
+				</div>
+				<div class="col-md-2">
+					<h2 class="book-title" style="color: #333333"><%= book.title %></h2>
+				</div>
+				<div class="col-md-8">
+						<%= image_tag "281767.svg", id: "google_map" %>
+						<h3 class="book-price"><%= number_to_currency(book.price, unit: "") %> $</h3>
+						(<%= book.distance.round(2) %>, miles)
+				</div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+
+
